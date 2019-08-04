@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "086a2a83-0c12-422d-b9e8-e26a71c4b161",
 		"name": "Semalai_CRUD_Collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -35,8 +35,11 @@
 							"});",
 							"",
 							"",
-							"var moment = require('moment');",
-							"pm.globals.set(\"name\", moment().format());"
+							"pm.test(\"First Name is George\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[0].first_name).to.eql(\"George\");",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -45,17 +48,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://{{baseURL}}/api/users",
-					"protocol": "http",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"api",
-						"users"
-					]
-				}
+				"url": "http://reqres.in/api/users"
 			},
 			"response": []
 		}
